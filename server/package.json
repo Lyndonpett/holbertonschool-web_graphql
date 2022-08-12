@@ -4,18 +4,19 @@
     "description": "GraphQL",
     "main": "app.js",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
-      "apollo-boost": "^0.4.9",
-      "express": "^4.18.1",
-      "express-graphql": "^0.12.0",
-      "graphql": "^16.5.0",
-      "react-apollo": "^3.1.5"
+        "apollo-boost": "^0.4.9",
+        "express": "^4.18.1",
+        "express-graphql": "^0.12.0",
+        "graphql": "^16.5.0",
+        "lodash": "^4.17.21",
+        "react-apollo": "^3.1.5"
     },
     "devDependencies": {
-      "nodemon": "^2.0.2"
+        "nodemon": "^2.0.2"
     }
 }
