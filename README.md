@@ -1,1 +1,1 @@
-# holbertonschool-web_graphql
+# This repo is for learning and understanding GraphQL
