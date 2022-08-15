@@ -45,7 +45,6 @@ const TaskType = new graphql.GraphQLObjectType({
     title: { type: GraphQLString },
     weight: { type: GraphQLInt },
     description: { type: GraphQLString },
-    projectId: { type: GraphQLString },
     project: {
       type: TaskType,
       resolve: (parent, args) => {
@@ -103,8 +102,47 @@ const RootQuery = new graphql.GraphQLObjectType({
   }),
 });
 
+const Mutation = new graphql.GraphQLObjectType({
+  name: 'Mutation',
+  fields: () => ({
+    addProject: {
+      type: ProjectType,
+      args: {
+        title: { type: new graphql.GraphQLNonNull(GraphQLString) },
+        weight: { type: new graphql.GraphQLNonNull(GraphQLInt) },
+        description: { type: new graphql.GraphQLNonNull(GraphQLString) },
+      },
+      resolve: (parent, args) => {
+        const newProject = new Project({
+          title: args.title,
+          weight: args.weight,
+          description: args.description,
+        });
+        return newProject.save();
+      },
+    },
+    addTask: {
+      type: TaskType,
+      args: {
+        title: { type: new graphql.GraphQLNonNull(GraphQLString) },
+        weight: { type: new graphql.GraphQLNonNull(GraphQLInt) },
+        description: { type: new graphql.GraphQLNonNull(GraphQLString) },
+      },
+      resolve: (parent, args) => {
+        const newTask = new Task({
+          title: args.title,
+          weight: args.weight,
+          description: args.description,
+        });
+        return newTask.save();
+      },
+    },
+  }),
+});
+
 const schema = new graphql.GraphQLSchema({
   query: RootQuery,
+  mutation: Mutation,
 });
 
 module.exports = schema;
