@@ -1,10 +1,10 @@
-const { Schema, model, models } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const taskSchema = new Schema({
   title: String,
   weight: Number,
   description: String,
-  projectId: String,
+  projectId: String
 });
 
-models.exports = model('Task', taskSchema);
+module.exports = model('Task', taskSchema);

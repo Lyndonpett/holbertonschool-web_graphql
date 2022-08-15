@@ -1,9 +1,9 @@
-const { Schema, model, models } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const projectSchema = new Schema({
   title: String,
   weight: Number,
-  description: String,
+  description: String
 });
 
-models.exports = model('Project', projectSchema);
+module.exports = model('Project', projectSchema);
