@@ -4,6 +4,8 @@ const schema = require('./schema/schema');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+require('dotenv').config();
+
 const app = express();
 
 app.use(cors());
@@ -12,15 +14,14 @@ app.use(
   '/graphql',
   graphqlHTTP({
     schema,
-    graphiql: true
+    graphiql: true,
   })
 );
 app.listen(4000, () => {
   console.log('now listening for request on port 4000');
 });
 
-const uri =
-  'mongodb+srv://root:root@cluster0.jcggsza.mongodb.net/?retryWrites=true&w=majority';
+const uri = process.env.DB_URI;
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
